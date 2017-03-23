@@ -1,0 +1,70 @@
+
+
+http://malinowepi.pl/post/81292520171/uruchamianie-w%C5%82asnych-program%C3%B3w-przy-starcie
+
+
+cd /home/pi/qt_project/build-robo3-Desktop-Release
+
+sudo mv robo3 /usr/local/sbin
+
+sudo nano /etc/init.d/robo3
+sudo chmod 755 /etc/init.d/robo3 
+
+sudo update-rc.d robo3 defaults
+
+
+
+
+
+
+sudo  /etc/init.d/robo3
+
+sudo  /usr/local/sbin/robo3
+
+ cd /usr/local/sbin/robo3
+
+sudo  /home/pi/qt_project/build-robo3-Desktop-Debug/./robo3 
+
+
+
+cd /usr/local/sbin/robo3 &  /usr/local/sbin/robo3
+
+lxterminal -e "/home/pi/qt_project/build-robo3-Desktop-Debug/robo3"
+
+xterm -e "/home/pi/qt_project/build-robo3-Desktop-Debug/robo3"
+
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+sudo nano /etc/X11/Xwrapper.config
+
+
+#! /bin/sh
+# /etc/init.d/skrypt
+ 
+### BEGIN INIT INFO
+# Provides:          Skrypt
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Skrypt
+# Description:       Skrypt
+### END INIT INFO
+
+case "$1" in
+  start)
+    echo "Starting skrypt"
+    # run application you want to start
+     /usr/local/sbin/robo3 &
+    ;;
+  stop)
+    echo "Stopping skrypt"
+    # kill application you want to stop
+    killall robo3
+    ;;
+  *)
+    echo "Usage: /etc/init.d/skrypt{start|stop}"
+    exit 1
+    ;;
+esac
+ 
+exit 0
